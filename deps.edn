@@ -1,0 +1,35 @@
+;; The deps.edn file describes the information needed to build a classpath.
+;;
+;; When using the `clojure` or `clj` script, there are several deps.edn files
+;; that are combined:
+;; - install-level
+;; - user level (this file)
+;; - project level (current directory when invoked)
+;;
+;; For all attributes other than :paths, these config files are merged left to right.
+;; Only the last :paths is kept and others are dropped.
+
+
+
+{:aliases
+;; start cider nrepl inside project to connect to by e.g. emacs,...
+ {:cider-clj {:extra-deps {org.clojure/clojure {:mvn/version "1.9.0"}
+                           cider/cider-nrepl {:mvn/version "0.21.1"}}
+              :main-opts ["-m" "nrepl.cmdline" "--middleware" "[cider.nrepl/cider-middleware]"]}
+ 
+;; start cljs-cider  nrepl inside project to connect to by e.g. emacs,...
+  :cider-cljs {:extra-deps {org.clojure/clojure {:mvn/version "1.9.0"}
+                            org.clojure/clojurescript {:mvn/version "1.10.339"}
+                            cider/cider-nrepl {:mvn/version "0.21.1"}
+                            cider/piggieback {:mvn/version "0.4.0"}}
+               :main-opts ["-m" "nrepl.cmdline" "--middleware"
+                           "[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]"]}
+
+;; start nightlight ide inside project see https://sekao.net/nightlight/
+  :nightlight {:extra-deps {nightlight {:mvn/version "2.4.1"}}
+               :main-opts ["-m" "nightlight.core"]}
+ 
+;; start gorilla repl see http://gorilla-repl.org/
+  :gorilla-repl {:extra-deps {org.clojars.benfb/gorilla-repl {:mvn/version "0.6.0"}}
+                 :main-opts ["-m" "gorilla-repl.core"]}
+  }}
