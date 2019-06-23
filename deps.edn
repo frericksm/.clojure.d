@@ -32,4 +32,11 @@
 ;; start gorilla repl see http://gorilla-repl.org/
   :gorilla-repl {:extra-deps {org.clojars.benfb/gorilla-repl {:mvn/version "0.6.0"}}
                  :main-opts ["-m" "gorilla-repl.core"]}
-  }}
+
+  
+;; https://oli.me.uk/2018-03-09-clojure-and-clojurescript-testing-with-the-clojure-cli/
+  :test 
+  {:extra-paths ["test"] 
+   :extra-deps {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner"
+                                           :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}} 
+   :main-opts ["-m" "cognitect.test-runner"]}}}
