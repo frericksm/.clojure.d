@@ -26,7 +26,7 @@
                            "[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]"]}
 
 ;; start nightlight ide inside project see https://sekao.net/nightlight/
-  :nightlight {:extra-deps {nightlight {:mvn/version "2.4.1"}}
+  :nightlight {:extra-deps {nightlight/nightlight {:mvn/version "2.4.1"}}
                :main-opts ["-m" "nightlight.core"]}
  
 ;; start gorilla repl see http://gorilla-repl.org/
